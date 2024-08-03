@@ -31,10 +31,14 @@ dependencies = ["jupyter_ai"]
 test = ["coverage", "pytest", "pytest-asyncio", "pytest-cov"]
 
 [project.entry-points."jupyter_ai.model_providers"]
-blablador-provider = "jupyter_ai_blablador.provider:BlabladorProvider"
+blablador = "jupyter_ai_blablador.provider:BlabladorProvider"
+blablador-chat = "jupyter_ai_blablador.provider:ChatBlabladorProvider"
 
 # [project.entry-points."jupyter_ai.chat_handlers"]
 # blablador-slash-command = "jupyter_ai_blablador.slash_command:TestSlashCommand"
+
+[project.entry-points."jupyter_ai.embeddings_model_providers"]
+blablador = "jupyter_ai_blablador.provider:BlabladorEmbeddingsProvider"
 
 [tool.hatch.build.hooks.version]
 path = "jupyter_ai_blablador/_version.py"
