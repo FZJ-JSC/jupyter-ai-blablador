@@ -31,7 +31,7 @@ dependencies = ["jupyter_ai"]
 test = ["coverage", "pytest", "pytest-asyncio", "pytest-cov"]
 
 [project.entry-points."jupyter_ai.model_providers"]
-test-provider = "jupyter_ai_blablador.provider:TestProvider"
+test-provider = "jupyter_ai_blablador.provider:BlabladorProvider"
 
 [project.entry-points."jupyter_ai.chat_handlers"]
 test-slash-command = "jupyter_ai_blablador.slash_command:TestSlashCommand"
