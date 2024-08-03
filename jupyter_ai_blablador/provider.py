@@ -2,7 +2,7 @@ from typing import ClassVar, List
 
 from langchain_openai import ChatOpenAI, OpenAI
 
-from jupyter_ai import AuthStrategy, BaseProvider, Field
+from jupyter_ai import AuthStrategy, EnvAuthStrategy, BaseProvider, Field
 
 
 class BlabladorProvider(BaseProvider, OpenAI):
@@ -70,14 +70,6 @@ class BlabladorProvider(BaseProvider, OpenAI):
     registry: ClassVar[bool] = False
     """Whether this provider is a registry provider."""
 
-    fields: ClassVar[List[Field]] = [
-        TextField(
-            key="openai_api_base", label="Base API URL (optional)", format="text"
-        ),
-        TextField(
-            key="openai_organization", label="Organization (optional)", format="text"
-        ),
-        TextField(key="openai_proxy", label="Proxy (optional)", format="text"),
-    ]
-    """User inputs expected by this provider when initializing it. Each `Field` `f`
-    should be passed in the constructor as a keyword argument, keyed by `f.key`.""i"
+    openai_api_base: ClassVar[str] = "https://helmholtz-blablador.fz-juelich.de:8000/v1" 
+    # openai_api_key: 
+    # openai_organization:
