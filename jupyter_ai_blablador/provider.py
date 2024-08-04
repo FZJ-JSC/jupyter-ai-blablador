@@ -5,6 +5,9 @@ from langchain_openai import ChatOpenAI, OpenAI, OpenAIEmbeddings
 from jupyter_ai import AuthStrategy, EnvAuthStrategy, Field
 from jupyter_ai_magics import BaseProvider, BaseEmbeddingsProvider
 
+# Difference between OpenAI and ChatOpenAI:
+#   https://stackoverflow.com/questions/76950609/what-is-the-difference-between-openai-and-chatopenai-in-langchain
+
 class BlabladorProvider(BaseProvider, OpenAI):
     id: ClassVar[str] = "blablador"
     name: ClassVar[str] = "Blablador"
@@ -68,7 +71,7 @@ class ChatBlabladorProvider(BaseProvider, ChatOpenAI):
 
 
 class BlabladorEmbeddingsProvider(BaseEmbeddingsProvider, OpenAIEmbeddings):
-    id: ClassVar[str] = "blablador"
+    id: ClassVar[str] = "blablador-embeddings"
     name: ClassVar[str] = "Blablador"
     models: ClassVar[List[str]] = [
         "alias-embeddings",

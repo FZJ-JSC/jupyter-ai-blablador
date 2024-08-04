@@ -38,7 +38,7 @@ blablador-chat = "jupyter_ai_blablador.provider:ChatBlabladorProvider"
 # blablador-slash-command = "jupyter_ai_blablador.slash_command:TestSlashCommand"
 
 [project.entry-points."jupyter_ai.embeddings_model_providers"]
-blablador = "jupyter_ai_blablador.provider:BlabladorEmbeddingsProvider"
+blablador-embeddings = "jupyter_ai_blablador.provider:BlabladorEmbeddingsProvider"
 
 [tool.check-wheel-contents]
 ignore = ["W002"]
