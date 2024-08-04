@@ -1,9 +1,10 @@
+from os import getenv
 from typing import ClassVar, List
 
 from langchain_openai import ChatOpenAI, OpenAI, OpenAIEmbeddings
 
 from jupyter_ai import AuthStrategy, EnvAuthStrategy, Field
-from jupyter_ai_magics import BaseProvider, BaseEmbeddingsProvider
+from jupyter_ai_magics import BaseProvider, BaseEmbeddingsProvider, Persona
 
 # Difference between OpenAI and ChatOpenAI:
 #   https://stackoverflow.com/questions/76950609/what-is-the-difference-between-openai-and-chatopenai-in-langchain
@@ -16,15 +17,20 @@ class BlabladorProvider(BaseProvider, OpenAI):
         "alias-fast",
         "alias-large",
     ]
+    help: ClassVar[str] = "Click here for more details on [Blablador](https://helmholtz-blablador.fz-juelich.de)"
     # help: ClassVar[str] = None
     model_id_key: ClassVar[str] = "model_name"
     model_id_label: ClassVar[str] = "Model ID"
     pypi_package_deps: ClassVar[List[str]] = ["langchain_openai"]
-    auth_strategy: ClassVar[AuthStrategy] = EnvAuthStrategy(name="OPENAI_API_KEY")
+    auth_strategy: ClassVar[AuthStrategy] =  EnvAuthStrategy(
+        name="BLABLADOR_API_KEY", keyword_param="openai_api_key",
+    )
     # registry: ClassVar[bool] = False
     openai_api_base: ClassVar[str] = "https://helmholtz-blablador.fz-juelich.de:8000/v1" 
-    # openai_api_key: 
-    # openai_organization:
+    # openai_api_base: ClassVar[str] = getenv("BLABLADOR_API_BASE", '')
+    # openai_api_key: ClassVar[str] = getenv("BLABLADOR_API_KEY", '')
+    openai_organization: ClassVar[str] = "Helmholtz Federation"
+    persona: ClassVar[Persona] = Persona(name="Blablador", avatar_route="api/ai/static/jupyternaut.svg")
 
     @classmethod
     def is_api_key_exc(cls, e: Exception):
@@ -47,15 +53,19 @@ class ChatBlabladorProvider(BaseProvider, ChatOpenAI):
         "alias-fast",
         "alias-large",
     ]
-    # help: ClassVar[str] = None
+    help: ClassVar[str] = "Click here for more details on [Blablador](https://helmholtz-blablador.fz-juelich.de)"
     model_id_key: ClassVar[str] = "model_name"
     model_id_label: ClassVar[str] = "Model ID"
     pypi_package_deps: ClassVar[List[str]] = ["langchain_openai"]
-    auth_strategy: ClassVar[AuthStrategy] = EnvAuthStrategy(name="OPENAI_API_KEY")
+    auth_strategy: ClassVar[AuthStrategy] =  EnvAuthStrategy(
+        name="BLABLADOR_API_KEY", keyword_param="openai_api_key",
+    )
     # registry: ClassVar[bool] = False
     openai_api_base: ClassVar[str] = "https://helmholtz-blablador.fz-juelich.de:8000/v1"
-    # openai_api_key:
-    # openai_organization:
+    # openai_api_base: ClassVar[str] = getenv("BLABLADOR_API_BASE", '')
+    # openai_api_key: ClassVar[str] = getenv("BLABLADOR_API_KEY", '')
+    openai_organization: ClassVar[str] = "Helmholtz Federation"
+    persona: ClassVar[Persona] = Persona(name="Blablador", avatar_route="api/ai/static/jupyternaut.svg")
 
     @classmethod
     def is_api_key_exc(cls, e: Exception):
@@ -76,7 +86,16 @@ class BlabladorEmbeddingsProvider(BaseEmbeddingsProvider, OpenAIEmbeddings):
     models: ClassVar[List[str]] = [
         "alias-embeddings",
     ]
-    model_id_key = "model"
-    pypi_package_deps = ["langchain_openai"]
-    auth_strategy = EnvAuthStrategy(name="OPENAI_API_KEY")
+    help: ClassVar[str] = "Click here for more details on [Blablador](https://helmholtz-blablador.fz-juelich.de)"
+    model_id_key: ClassVar[str] = "model"
+    model_id_label: ClassVar[str] = "Model ID"
+    pypi_package_deps: ClassVar[List[str]] =  ["langchain_openai"]
+    auth_strategy: ClassVar[AuthStrategy] =  EnvAuthStrategy(
+        name="BLABLADOR_API_KEY", keyword_param="openai_api_key",
+    )
+    # registry: ClassVar[bool] = False
     openai_api_base: ClassVar[str] = "https://helmholtz-blablador.fz-juelich.de:8000/v1"
+    # openai_api_base: ClassVar[str] = getenv("BLABLADOR_API_BASE", '')
+    # openai_api_key: ClassVar[str] = os.getenv("BLABLADOR_API_KEY", '')
+    openai_organization: ClassVar[str] = "Helmholtz Federation"
+    persona: ClassVar[Persona] = Persona(name="Blablador", avatar_route="api/ai/static/jupyternaut.svg")
