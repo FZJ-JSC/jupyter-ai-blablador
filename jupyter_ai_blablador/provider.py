@@ -83,7 +83,7 @@ class BlabladorEmbeddingsProvider(BaseEmbeddingsProvider, OpenAIEmbeddings):
         "alias-embeddings",
     ]
     help = "Click here for more details on [Blablador](https://helmholtz-blablador.fz-juelich.de)"
-    model_id_key = "model_name"
+    model_id_key = "model"
     model_id_label = "Model ID"
     # registry = False
     pypi_package_deps = ["langchain_openai"]
